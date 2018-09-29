@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTrack.Data", "src\ExpenseTrack.Data\ExpenseTrack.Data.csproj", "{3D0AF159-66A3-435A-9B68-FAAF5F2E1FA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTrack.Web", "src\ExpenseTrack.Web\ExpenseTrack.Web.csproj", "{4F1CB268-B8A1-4AC9-BA10-6EC756C0E9A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3D0AF159-66A3-435A-9B68-FAAF5F2E1FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D0AF159-66A3-435A-9B68-FAAF5F2E1FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D0AF159-66A3-435A-9B68-FAAF5F2E1FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F1CB268-B8A1-4AC9-BA10-6EC756C0E9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F1CB268-B8A1-4AC9-BA10-6EC756C0E9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F1CB268-B8A1-4AC9-BA10-6EC756C0E9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F1CB268-B8A1-4AC9-BA10-6EC756C0E9A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
