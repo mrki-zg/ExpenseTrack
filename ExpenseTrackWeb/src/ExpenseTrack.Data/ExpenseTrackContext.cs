@@ -1,11 +1,11 @@
-﻿using System.Data.Entity;
-using ExpenseTrack.Data.Model;
+﻿using ExpenseTrack.Data.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTrack.Data
 {
     public class ExpenseTrackContext : DbContext
     {
-        public ExpenseTrackContext() : base("expenseTrackEntities")
+        public ExpenseTrackContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
         }
 

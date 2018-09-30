@@ -7,7 +7,7 @@
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public int ExpenseCategoryId { get; set; }
+        public int? ExpenseCategoryId { get; set; }
         public ExpenseCategory ExpenseCategory { get; set; }
 
         public string Title { get; set; }
