@@ -1,5 +1,6 @@
 using ExpenseTrack.Data;
 using ExpenseTrack.Web.Repository;
+using ExpenseTrack.Web.Util;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -71,6 +72,8 @@ namespace ExpenseTrack.Web
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<ExpenseTrackContext>();
                 context.Database.Migrate();
+
+                SeedData.Initialize(serviceScope.ServiceProvider);
             }
 
             app.UseHttpsRedirection();

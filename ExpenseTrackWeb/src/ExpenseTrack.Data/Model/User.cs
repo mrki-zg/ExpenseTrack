@@ -14,6 +14,12 @@ namespace ExpenseTrack.Data.Model
         [Required]
         public string LegalName { get; set; }
 
+        [Required]
+        public string UserName { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+
         public IList<ExpenseCategory> ExpenseCategories { get; set; }
 
         public IList<ExpenseEntry> ExpenseEntries { get; set; }
