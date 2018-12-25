@@ -114,6 +114,7 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest();
             }
 
+            user.Password = PasswordHelper.HashPassword(user.Password);
             _context.Entry(user).State = EntityState.Modified;
 
             try
@@ -144,6 +145,7 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest(ModelState);
             }
 
+            user.Password = PasswordHelper.HashPassword(user.Password);
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

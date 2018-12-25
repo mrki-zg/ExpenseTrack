@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
                               .subscribe(
                                 data => this.router.navigate([this.returnUrl]),
                                 error => {
-                                  this.alertService.error(error);
+                                  this.alertService.error('Login failed! Please check user name and password.');
                                   this.loading = false;
                                 });
   }

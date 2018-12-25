@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AlertComponent } from './_directives/alert.component';
+import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
@@ -17,7 +19,6 @@ import { UserService } from './_services/user.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { routing } from './app.routing';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,17 @@ import { LoginComponent } from './login/login.component';
     CounterComponent,
     FetchDataComponent,
     AlertComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent
   ],
+
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     routing
   ],
+
   providers: [
     AuthGuard,
     {
@@ -46,6 +50,7 @@ import { LoginComponent } from './login/login.component';
     AuthenticationService,
     UserService
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,6 @@
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div *ngIf="currentUser != null" class="container-fluid">
+      <div class="navbar-text">Logged in as <strong>{{currentUser.givenName}} {{currentUser.legalName}}</strong></div>
+      <button type="button" class="btn btn-primary navbar-btn" (click)="signOut()">Sign out</button>
+    </div>
+  </nav>
