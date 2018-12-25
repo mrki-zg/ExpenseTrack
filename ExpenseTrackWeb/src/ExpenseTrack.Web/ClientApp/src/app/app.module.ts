@@ -10,20 +10,24 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AlertComponent } from './_directives/alert.component';
 
+import { AuthenticationService } from './_services/authentication.service';
+import { AlertService } from './_services/alert.service';
+import { UserService } from './_services/user.service';
+
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { routing } from './app.routing';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-
-    AlertComponent
+    AlertComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +41,10 @@ import { routing } from './app.routing';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-    }
+    },
+    AlertService,
+    AuthenticationService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExpenseTrack.Data.Model
 {
@@ -8,17 +9,16 @@ namespace ExpenseTrack.Data.Model
         [Key]
         public int UserId { get; set; }
 
-        [Required]
         public string GivenName { get; set; }
 
-        [Required]
         public string LegalName { get; set; }
 
-        [Required]
         public string UserName { get; set; }
 
-        [Required]
         public string Password { get; set; }
+
+        [NotMapped]
+        public string Token { get; set; }
 
         public IList<ExpenseCategory> ExpenseCategories { get; set; }
 

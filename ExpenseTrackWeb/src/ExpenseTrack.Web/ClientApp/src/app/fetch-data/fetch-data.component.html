@@ -22,3 +22,22 @@
     </tr>
   </tbody>
 </table>
+
+<table class='table' *ngIf="users">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Given name</th>
+      <th>Legal name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.userId }}</td>
+      <td>{{ user.givenName }}</td>
+      <td>{{ user.legalName }}</td>
+      <td>{{ user.userName }}</td>
+    </tr>
+  </tbody>
+</table>

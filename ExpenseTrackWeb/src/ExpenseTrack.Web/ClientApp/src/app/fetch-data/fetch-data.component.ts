@@ -1,3 +1,5 @@
+import { User } from './../_models/user.model';
+import { UserService } from './../_services/user.service';
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,10 +10,16 @@ import { HttpClient } from '@angular/common/http';
 export class FetchDataComponent {
   public forecasts: WeatherForecast[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+  public users: User[];
+
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, userService: UserService) {
     http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
       this.forecasts = result;
     }, error => console.error(error));
+
+    userService.getAll().subscribe(users => {
+      this.users = users;
+    });
   }
 }
 
