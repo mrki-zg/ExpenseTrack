@@ -138,6 +138,7 @@ namespace ExpenseTrack.Web.Controllers.api
 
         // POST: api/Users
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> PostUser([FromBody] User user)
         {
             if (!ModelState.IsValid)

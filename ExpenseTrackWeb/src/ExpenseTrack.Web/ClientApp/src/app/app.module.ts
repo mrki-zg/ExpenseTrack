@@ -19,6 +19,7 @@ import { UserService } from './_services/user.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { routing } from './app.routing';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,9 @@ import { routing } from './app.routing';
     FetchDataComponent,
     AlertComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent
   ],
-
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,

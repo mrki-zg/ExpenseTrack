@@ -4,7 +4,7 @@ import { HomeComponent } from "./home/home.component";
 import { CounterComponent } from "./counter/counter.component";
 import { FetchDataComponent } from "./fetch-data/fetch-data.component";
 import { LoginComponent } from "./login/login.component";
-
+import { RegisterComponent } from "./register/register.component";
 import { AuthGuard } from './_guards/auth.guard';
 
 const appRoutes: Routes = [
@@ -12,6 +12,7 @@ const appRoutes: Routes = [
     { path: 'counter', component: CounterComponent, canActivate: [AuthGuard] },
     { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
 
     { path: '**', redirectTo: '' }
 ]
