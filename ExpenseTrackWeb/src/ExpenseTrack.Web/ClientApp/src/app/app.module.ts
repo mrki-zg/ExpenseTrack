@@ -6,8 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AlertComponent } from './_directives/alert.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
@@ -28,9 +26,7 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+    HomeComponent,    
     AlertComponent,
     LoginComponent,
     FooterComponent,
