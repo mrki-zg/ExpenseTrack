@@ -131,6 +131,14 @@
     <Compile Include="Migrations\20181224124823_UserAddUserNameAndPwd.designer.cs">
       <DependentUpon>20181224124823_UserAddUserNameAndPwd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190108124150_AddDateToExpenseEntry.cs" />
+    <Compile Include="Migrations\20190108124150_AddDateToExpenseEntry.designer.cs">
+      <DependentUpon>20190108124150_AddDateToExpenseEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190108124844_AddDateToExpenseEntry2.cs" />
+    <Compile Include="Migrations\20190108124844_AddDateToExpenseEntry2.designer.cs">
+      <DependentUpon>20190108124844_AddDateToExpenseEntry2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ExpenseTrackContextModelSnapshot.cs" />
     <Compile Include="Model\ExpenseCategory.cs" />
     <Compile Include="Model\ExpenseEntry.cs" />

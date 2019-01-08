@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExpenseTrack.Data;
 using ExpenseTrack.Data.Model;
+using ExpenseTrack.Web.Repository;
 using ExpenseTrack.Web.Util;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
@@ -22,13 +23,13 @@ namespace ExpenseTrack.Web.Controllers.api
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly ExpenseTrackContext _context;
+        private readonly IUserRepository _userRepository;
 
         private readonly AppSettings _appSettings;
 
-        public UsersController(ExpenseTrackContext context, IOptions<AppSettings> appSettings)
+        public UsersController(IUserRepository userRepository, IOptions<AppSettings> appSettings)
         {
-            _context = context;
+            _userRepository = userRepository;
             _appSettings = appSettings.Value;
         }
 
@@ -41,7 +42,7 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest(ModelState);
             }
 
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == userParam.UserName);
+            var user = await _userRepository.GetUserByUserNameAsync(userParam.UserName);
 
             if (user == null)
             {
@@ -78,7 +79,7 @@ namespace ExpenseTrack.Web.Controllers.api
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
-            return _context.Users;
+            return _userRepository.GetAll();
         }
 
         // GET: api/Users/5
@@ -90,7 +91,7 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest(ModelState);
             }
 
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.GetUserAsync(id);
 
             if (user == null)
             {
@@ -114,23 +115,11 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest();
             }
 
-            user.Password = PasswordHelper.HashPassword(user.Password);
-            _context.Entry(user).State = EntityState.Modified;
+            var result = await _userRepository.UpdateUser(id, user);
 
-            try
+            if (!result)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
             return NoContent();
@@ -146,9 +135,7 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest(ModelState);
             }
 
-            user.Password = PasswordHelper.HashPassword(user.Password);
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            await _userRepository.AddUser(user);
 
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
@@ -162,21 +149,14 @@ namespace ExpenseTrack.Web.Controllers.api
                 return BadRequest(ModelState);
             }
 
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepository.DeleteUser(id);
+
             if (user == null)
             {
-                return NotFound();
+                return NotFound();        
             }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
             return Ok(user);
-        }
-
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.UserId == id);
         }
     }
 }

@@ -12,9 +12,12 @@ import { AlertComponent } from './_directives/alert.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { SumExpensesPipe } from './_pipes/sum-expense.pipe';
+
 import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
 import { UserService } from './_services/user.service';
+import { ExpenseService } from './_services/expense.service';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -31,7 +34,10 @@ import { RegisterComponent } from './register/register.component';
     AlertComponent,
     LoginComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+
+    // pipes
+    SumExpensesPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,7 +55,8 @@ import { RegisterComponent } from './register/register.component';
     },
     AlertService,
     AuthenticationService,
-    UserService
+    UserService,
+    ExpenseService
   ],
 
   bootstrap: [AppComponent]

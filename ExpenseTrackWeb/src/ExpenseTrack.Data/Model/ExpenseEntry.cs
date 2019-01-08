@@ -1,4 +1,7 @@
-﻿namespace ExpenseTrack.Data.Model
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace ExpenseTrack.Data.Model
 {
     public class ExpenseEntry
     {
@@ -15,5 +18,8 @@
         public string Description { get; set; }
 
         public double Value { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime DateAdded { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using ExpenseTrack.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ExpenseTrack.Data.Migrations
 {
     [DbContext(typeof(ExpenseTrackContext))]
-    partial class ExpenseTrackContextModelSnapshot : ModelSnapshot
+    [Migration("20190108124150_AddDateToExpenseEntry")]
+    partial class AddDateToExpenseEntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,7 @@ namespace ExpenseTrack.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateAdded");
+                    b.Property<DateTime>("Created");
 
                     b.Property<string>("Description");
 

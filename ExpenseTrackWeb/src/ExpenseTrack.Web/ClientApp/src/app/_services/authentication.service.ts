@@ -12,7 +12,7 @@ export class AuthenticationService {
     this.currentUserSubject.next(this.currentUser);
   }
 
-  get currentUser() {
+  get currentUser(): User {
     let currentUserString = localStorage.getItem('currentUser');
     if (currentUserString) {
       return JSON.parse(currentUserString);
