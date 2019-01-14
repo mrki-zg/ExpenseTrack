@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using ExpenseTrack.Data;
 using ExpenseTrack.Data.Model;
 using ExpenseTrack.Web.Transfer;
@@ -47,6 +49,20 @@ namespace ExpenseTrack.Web.Repository
                 ExpenseCategoryLabel = ee.ExpenseCategory.Name,
                 Created = ee.DateAdded
             }).ToList();
+        }
+
+        public async Task AddExpenseAsync(Expense expense)
+        {
+            _dbContext.ExpenseEntries.Add(new ExpenseEntry
+            {
+                UserId = expense.UserId,
+                DateAdded = DateTime.Now,
+                Description = expense.Description,
+                Title = expense.Title,
+                ExpenseCategoryId = expense.ExpenseCategoryId,
+                Value = expense.Value                
+            });
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

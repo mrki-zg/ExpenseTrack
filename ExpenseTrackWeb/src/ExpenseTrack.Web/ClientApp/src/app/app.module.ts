@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
+import { ExpenseListComponent } from './expense/expense-list.component';
+import { ExpenseDetailComponent } from './expense/expense-detail.component';
 import { AlertComponent } from './_directives/alert.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
@@ -25,21 +28,35 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,    
+    NavMenuComponent,    
     AlertComponent,
-    LoginComponent,
+    ExpenseListComponent,
+    ExpenseDetailComponent,
     FooterComponent,
+    LoginComponent,
     RegisterComponent,
 
     // pipes
     SumExpensesPipe
   ],
+
+  entryComponents: [
+    ExpenseDetailComponent
+  ],
+
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
-    routing
+    FormsModule,    
+    ReactiveFormsModule,
+    routing,
+
+    // material
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
 
   providers: [
