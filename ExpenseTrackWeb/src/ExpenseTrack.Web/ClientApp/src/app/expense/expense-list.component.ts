@@ -24,21 +24,33 @@ export class ExpenseListComponent implements OnInit {
   }
 
   createNewExpense() {
-    this.dialog.open(ExpenseDetailComponent, {
+    var dialog = this.dialog.open(ExpenseDetailComponent, {
       height: '500px',
       width: '700px',
       maxHeight: '800px',
       maxWidth: '1200px'
     });
+    dialog.afterClosed().subscribe(() => {
+      this.loadExpenses();
+    }); 
   }
 
   editExpense(expense: Expense) {
-    this.dialog.open(ExpenseDetailComponent, {
+    var dialog = this.dialog.open(ExpenseDetailComponent, {
       height: '500px',
       width: '700px',
       maxHeight: '800px',
       maxWidth: '1200px',
       data: expense
+    });
+    dialog.afterClosed().subscribe(() => {
+      this.loadExpenses();
+    }); 
+  }
+
+  deleteExpense(expense: Expense) {
+    this.expenseService.deleteExpense(expense.expenseEntryId).subscribe(expense => {
+      this.loadExpenses();
     });
   }
 

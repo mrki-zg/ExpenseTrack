@@ -53,5 +53,23 @@ namespace ExpenseTrack.Web.Controllers.api
 
             return CreatedAtAction("GetExpense", new { expenseEntryId }, expense);
         }
+
+        [HttpDelete("{expenseEntryId}")]
+        public async Task<IActionResult> DeleteExpense([FromRoute] int expenseEntryId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var expense = await _expenseRepository.DeleteExpenseAsync(expenseEntryId);
+
+            if (expense == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(expense);
+        }
     }
 }

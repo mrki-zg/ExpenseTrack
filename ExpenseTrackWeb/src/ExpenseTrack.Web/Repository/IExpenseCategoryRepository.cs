@@ -8,6 +8,8 @@ namespace ExpenseTrack.Web.Repository
     {
         IEnumerable<ExpenseCategory> GetForUser(int? userId);
 
-        Task<ExpenseCategory> GetExpenseCategoryForUser(string expenseCategoryLabel, int userId);
+        Task<ExpenseCategory> GetExpenseCategoryForUserAsync(string expenseCategoryLabel, int userId);
+
+        Task<ExpenseCategory> DeleteExpenseCategoryAsync(int expenseCategoryId, bool saveChanges = true);
     }
 }

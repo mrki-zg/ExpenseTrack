@@ -21,4 +21,8 @@ export class ExpenseService {
   addExpense(expense: Expense) {
     return this.http.post<Expense>(this.apiPrefix, expense);
   }
+
+  deleteExpense(expenseEntryId: number) {
+    return this.http.delete<Expense>(this.apiPrefix + "/" + expenseEntryId);
+  }
 }

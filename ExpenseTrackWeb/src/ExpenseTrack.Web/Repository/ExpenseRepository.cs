@@ -28,6 +28,7 @@ namespace ExpenseTrack.Web.Repository
                         join u in _dbContext.Users on e.UserId equals u.UserId
                         select new Expense
                         {
+                            ExpenseEntryId = e.ExpenseEntryId,
                             Description = e.Description,
                             UserId = e.UserId,
                             NameOfUser = $"{u.GivenName} {u.LegalName}",
@@ -44,6 +45,7 @@ namespace ExpenseTrack.Web.Repository
         {
             return _dbContext.ExpenseEntries.Where(ee => ee.UserId == userId).Select(ee => new Expense
             {
+                ExpenseEntryId = ee.ExpenseEntryId,
                 Description = ee.Description,
                 UserId = ee.UserId,
                 NameOfUser = $"{ee.User.GivenName} {ee.User.LegalName}",
@@ -59,6 +61,7 @@ namespace ExpenseTrack.Web.Repository
         {
             return _dbContext.ExpenseEntries.Where(ee => ee.ExpenseEntryId == expenseEntryId).Select(ee => new Expense
             {
+                ExpenseEntryId = ee.ExpenseEntryId,
                 Description = ee.Description,
                 UserId = ee.UserId,
                 NameOfUser = $"{ee.User.GivenName} {ee.User.LegalName}",
@@ -74,7 +77,7 @@ namespace ExpenseTrack.Web.Repository
         {
             if (!string.IsNullOrEmpty(expense.ExpenseCategoryLabel))
             {
-                var newExpenseCategory = await _expenseCategoryRepository.GetExpenseCategoryForUser(expense.ExpenseCategoryLabel, expense.UserId);
+                var newExpenseCategory = await _expenseCategoryRepository.GetExpenseCategoryForUserAsync(expense.ExpenseCategoryLabel, expense.UserId);
                 if (newExpenseCategory != null)
                 {
                     expense.ExpenseCategoryId = newExpenseCategory.ExpenseCategoryId;
@@ -94,6 +97,22 @@ namespace ExpenseTrack.Web.Repository
 
             await _dbContext.SaveChangesAsync();
             return newExpenseEntry.ExpenseEntryId;
+        }
+
+        public async Task<Expense> DeleteExpenseAsync(int expenseEntryId)
+        {
+            var expense = await GetExpense(expenseEntryId);
+            if (expense != null)
+            {
+                var expenseEntry = await _dbContext.ExpenseEntries.FirstOrDefaultAsync(ee => ee.ExpenseEntryId == expenseEntryId);
+                if (expenseEntry != null)
+                {
+                    _dbContext.ExpenseEntries.Remove(expenseEntry);
+                    await _dbContext.SaveChangesAsync();
+                }
+            }
+
+            return expense;
         }
     }
 }

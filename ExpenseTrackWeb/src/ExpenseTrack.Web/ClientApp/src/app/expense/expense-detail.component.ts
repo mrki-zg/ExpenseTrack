@@ -2,11 +2,13 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { List } from 'linqts';
+import { Observable } from 'rxjs/Observable';
+import { map, startWith } from 'rxjs/operators';
 
 import { Expense } from '../_models/expense.model';
 import { ExpenseService } from '../_services/expense.service';
 import { AuthenticationService } from '../_services/authentication.service';
-import { ExpenseCategoriesService } from '../_services/expense-categories.service'; 
+import { ExpenseCategoriesService } from '../_services/expense-categories.service';
 
 @Component({
     selector: 'app-expense-detail',
@@ -18,6 +20,7 @@ export class ExpenseDetailComponent implements OnInit {
 
     category = new FormControl();
     categories: string[];
+    filteredCategories: Observable<string[]>;
 
     private isCreateMode = false;
 
@@ -41,11 +44,22 @@ export class ExpenseDetailComponent implements OnInit {
     ngOnInit(): void {
         this.expenseCategoriesService.getAllForUser(this.authenticationService.currentUser.userId).subscribe(expenseCategories => {
             this.categories = new List(expenseCategories).Select(ec => ec.name).ToArray();
-        }); 
+            if (this.category.value == null) {
+                this.category.setValue('');   
+            }            
+        });
 
         this.category.valueChanges.subscribe(newVal => {
             this.expense.expenseCategoryLabel = newVal;
         });
+
+        this.filteredCategories = this.category.valueChanges.pipe(startWith(''), map(value => {
+            if (this.categories == null) {
+                return [];
+            }
+
+            return this.categories.filter(category => category.includes(value));
+        }));        
     }
 
     saveExpense(): void {
@@ -59,10 +73,10 @@ export class ExpenseDetailComponent implements OnInit {
             this.expenseService.addExpense(this.expense).subscribe(createdExpense => {
                 console.log('created expense:');
                 console.log(createdExpense);
-            });    
+            });
         } else {
-            
-        }        
+            // TODO implement
+        }
 
         this.dialogRef.close();
     }

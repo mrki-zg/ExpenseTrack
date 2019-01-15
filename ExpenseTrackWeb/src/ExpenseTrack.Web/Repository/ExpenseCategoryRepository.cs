@@ -23,7 +23,7 @@ namespace ExpenseTrack.Web.Repository
                 : _dbContext.ExpenseCategories.ToList();
         }
 
-        public async Task<ExpenseCategory> GetExpenseCategoryForUser(string expenseCategoryLabel, int userId)
+        public async Task<ExpenseCategory> GetExpenseCategoryForUserAsync(string expenseCategoryLabel, int userId)
         {
             ExpenseCategory expenseCategory = null;
 
@@ -41,6 +41,21 @@ namespace ExpenseTrack.Web.Repository
             else
             {
                 expenseCategory = await _dbContext.ExpenseCategories.FirstOrDefaultAsync(ec => ec.Name == expenseCategoryLabel && ec.UserId == userId);
+            }
+
+            return expenseCategory;
+        }
+
+        public async Task<ExpenseCategory> DeleteExpenseCategoryAsync(int expenseCategoryId, bool saveChanges = true)
+        {
+            var expenseCategory = await _dbContext.ExpenseCategories.FirstOrDefaultAsync(ec => ec.ExpenseCategoryId == expenseCategoryId);
+            if (expenseCategory != null)
+            {
+                _dbContext.ExpenseCategories.Remove(expenseCategory);
+                if (saveChanges)
+                {
+                    await _dbContext.SaveChangesAsync();
+                }
             }
 
             return expenseCategory;

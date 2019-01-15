@@ -7,6 +7,7 @@ export class ExpenseCategory {
 }
 
 export class Expense {
+    expenseEntryId: number;
     userId: number;
     nameOfUser: string;
     expenseCategoryId?: number;

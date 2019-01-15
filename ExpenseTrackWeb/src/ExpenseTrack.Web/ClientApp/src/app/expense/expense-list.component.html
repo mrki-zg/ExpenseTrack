@@ -19,9 +19,14 @@
       <td>{{expense.created.toLocaleString() | date}}</td>
       <td>{{expense.value}}</td>
       <td>
-        <button type="button" class="btn btn-primary" (click)="editExpense(expense)">
-          <span class="glyphicon glyphicon-icon glyphicon-pencil" aria-hidden="true"></span>
-        </button>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="editExpense(expense)">
+            <span class="glyphicon glyphicon-icon glyphicon-pencil" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="btn btn-primary" (click)="deleteExpense(expense)">
+            <span class="glyphicon glyphicon-icon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+        </div>
       </td>
     </tr>
     <tr>

@@ -4,6 +4,8 @@ namespace ExpenseTrack.Web.Transfer
 {
     public class Expense
     {
+        public int ExpenseEntryId { get; set; }
+
         public int UserId { get; set; }
         public string NameOfUser { get; set; }
 
