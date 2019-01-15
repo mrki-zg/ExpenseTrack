@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ExpenseTrack.Data;
 using ExpenseTrack.Data.Model;
 using ExpenseTrack.Web.Transfer;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTrack.Web.Repository
 {
@@ -12,9 +13,12 @@ namespace ExpenseTrack.Web.Repository
     {
         private readonly ExpenseTrackContext _dbContext;
 
-        public ExpenseRepository(ExpenseTrackContext dbContext)
+        private readonly IExpenseCategoryRepository _expenseCategoryRepository;
+
+        public ExpenseRepository(ExpenseTrackContext dbContext, IExpenseCategoryRepository expenseCategoryRepository)
         {
             _dbContext = dbContext;
+            _expenseCategoryRepository = expenseCategoryRepository;
         }
 
         public IEnumerable<Expense> GetAll()
@@ -51,18 +55,45 @@ namespace ExpenseTrack.Web.Repository
             }).ToList();
         }
 
-        public async Task AddExpenseAsync(Expense expense)
+        public Task<Expense> GetExpense(int expenseEntryId)
         {
-            _dbContext.ExpenseEntries.Add(new ExpenseEntry
+            return _dbContext.ExpenseEntries.Where(ee => ee.ExpenseEntryId == expenseEntryId).Select(ee => new Expense
+            {
+                Description = ee.Description,
+                UserId = ee.UserId,
+                NameOfUser = $"{ee.User.GivenName} {ee.User.LegalName}",
+                ExpenseCategoryId = ee.ExpenseCategoryId,
+                Title = ee.Title,
+                Value = ee.Value,
+                ExpenseCategoryLabel = ee.ExpenseCategory.Name,
+                Created = ee.DateAdded
+            }).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> AddExpenseAsync(Expense expense)
+        {
+            if (!string.IsNullOrEmpty(expense.ExpenseCategoryLabel))
+            {
+                var newExpenseCategory = await _expenseCategoryRepository.GetExpenseCategoryForUser(expense.ExpenseCategoryLabel, expense.UserId);
+                if (newExpenseCategory != null)
+                {
+                    expense.ExpenseCategoryId = newExpenseCategory.ExpenseCategoryId;
+                }
+            }
+
+            var newExpenseEntry = new ExpenseEntry
             {
                 UserId = expense.UserId,
                 DateAdded = DateTime.Now,
                 Description = expense.Description,
                 Title = expense.Title,
                 ExpenseCategoryId = expense.ExpenseCategoryId,
-                Value = expense.Value                
-            });
+                Value = expense.Value
+            };
+            _dbContext.ExpenseEntries.Add(newExpenseEntry);
+
             await _dbContext.SaveChangesAsync();
+            return newExpenseEntry.ExpenseEntryId;
         }
     }
 }

@@ -11,6 +11,8 @@ namespace ExpenseTrack.Web.Repository
 
         IEnumerable<Expense> GetAllForUser(int userId);
 
-        Task AddExpenseAsync(Expense expense);
+        Task<Expense> GetExpense(int expenseEntryId);
+
+        Task<int> AddExpenseAsync(Expense expense);
     }
 }

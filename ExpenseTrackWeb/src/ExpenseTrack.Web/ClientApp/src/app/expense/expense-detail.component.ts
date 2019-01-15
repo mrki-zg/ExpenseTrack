@@ -1,9 +1,12 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormControl } from '@angular/forms';
+import { List } from 'linqts';
 
 import { Expense } from '../_models/expense.model';
-import { FormControl } from '@angular/forms';
 import { ExpenseService } from '../_services/expense.service';
+import { AuthenticationService } from '../_services/authentication.service';
+import { ExpenseCategoriesService } from '../_services/expense-categories.service'; 
 
 @Component({
     selector: 'app-expense-detail',
@@ -21,10 +24,13 @@ export class ExpenseDetailComponent implements OnInit {
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: Expense,
         private dialogRef: MatDialogRef<ExpenseDetailComponent>,
-        private expenseService: ExpenseService) {
+        private expenseService: ExpenseService,
+        private authenticationService: AuthenticationService,
+        private expenseCategoriesService: ExpenseCategoriesService) {
 
         if (data == null) {
             this.expense = new Expense();
+            this.expense.userId = this.authenticationService.currentUser.userId;
             this.isCreateMode = true;
         } else {
             this.expense = this.iterationCopy(data) as Expense;
@@ -33,8 +39,10 @@ export class ExpenseDetailComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // TO-DO: load categories
-        this.categories = ['Food', 'Living'];
+        this.expenseCategoriesService.getAllForUser(this.authenticationService.currentUser.userId).subscribe(expenseCategories => {
+            this.categories = new List(expenseCategories).Select(ec => ec.name).ToArray();
+        }); 
+
         this.category.valueChanges.subscribe(newVal => {
             this.expense.expenseCategoryLabel = newVal;
         });
@@ -47,7 +55,14 @@ export class ExpenseDetailComponent implements OnInit {
 
         console.log(this.expense);
 
-        // TODO save expense
+        if (this.isCreateMode) {
+            this.expenseService.addExpense(this.expense).subscribe(createdExpense => {
+                console.log('created expense:');
+                console.log(createdExpense);
+            });    
+        } else {
+            
+        }        
 
         this.dialogRef.close();
     }

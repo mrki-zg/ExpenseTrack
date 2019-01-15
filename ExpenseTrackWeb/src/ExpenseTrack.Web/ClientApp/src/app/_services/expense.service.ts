@@ -17,4 +17,8 @@ export class ExpenseService {
   getAllForUser(userId: number) {
     return this.http.get<Expense[]>(this.apiPrefix + '/' + userId)
   }
+
+  addExpense(expense: Expense) {
+    return this.http.post<Expense>(this.apiPrefix, expense);
+  }
 }

@@ -19,6 +19,7 @@ import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
 import { UserService } from './_services/user.service';
 import { ExpenseService } from './_services/expense.service';
+import { ExpenseCategoriesService } from './_services/expense-categories.service';
 
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -69,7 +70,8 @@ import { RegisterComponent } from './register/register.component';
     AlertService,
     AuthenticationService,
     UserService,
-    ExpenseService
+    ExpenseService,
+    ExpenseCategoriesService
   ],
 
   bootstrap: [AppComponent]
