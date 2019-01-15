@@ -114,5 +114,31 @@ namespace ExpenseTrack.Web.Repository
 
             return expense;
         }
+
+        public async Task<bool> UpdateExpenseAsync(int expenseEntryId, Expense expense)
+        {
+            var expenseEntry = await _dbContext.ExpenseEntries.FindAsync(expenseEntryId);
+            if (expenseEntry == null)
+            {
+                return false;
+            }
+
+            expenseEntry.Title = expense.Title;
+            expenseEntry.Description = expense.Description;
+            expenseEntry.Value = expense.Value;
+
+            if (!string.IsNullOrEmpty(expense.ExpenseCategoryLabel))
+            {
+                var newExpenseCategory = await _expenseCategoryRepository.GetExpenseCategoryForUserAsync(expense.ExpenseCategoryLabel, expense.UserId);
+                if (newExpenseCategory != null)
+                {
+                    expenseEntry.ExpenseCategoryId = newExpenseCategory.ExpenseCategoryId;
+                }
+            }
+
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

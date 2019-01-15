@@ -71,5 +71,28 @@ namespace ExpenseTrack.Web.Controllers.api
 
             return Ok(expense);
         }
+
+        [HttpPut("{expenseEntryId}")]
+        public async Task<IActionResult> UpdateExpense([FromRoute] int expenseEntryId, [FromBody] Expense expense)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (expenseEntryId != expense.ExpenseEntryId)
+            {
+                return BadRequest();
+            }
+
+            var isUpdated = await _expenseRepository.UpdateExpenseAsync(expenseEntryId, expense);
+
+            if (!isUpdated)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
     }
 }

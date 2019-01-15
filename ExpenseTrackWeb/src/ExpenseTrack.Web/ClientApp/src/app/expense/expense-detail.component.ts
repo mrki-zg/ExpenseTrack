@@ -75,7 +75,10 @@ export class ExpenseDetailComponent implements OnInit {
                 console.log(createdExpense);
             });
         } else {
-            // TODO implement
+            this.expenseService.updateExpense(this.expense.expenseEntryId, this.expense).subscribe(updatedExpense => {
+                console.log('updated expense:');
+                console.log(updatedExpense);
+            });
         }
 
         this.dialogRef.close();

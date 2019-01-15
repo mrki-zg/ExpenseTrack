@@ -25,4 +25,8 @@ export class ExpenseService {
   deleteExpense(expenseEntryId: number) {
     return this.http.delete<Expense>(this.apiPrefix + "/" + expenseEntryId);
   }
+
+  updateExpense(expenseEntryId: number, expense: Expense) {
+    return this.http.put<Expense>(this.apiPrefix + "/" + expenseEntryId, expense);
+  }
 }

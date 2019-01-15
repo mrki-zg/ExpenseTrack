@@ -16,5 +16,7 @@ namespace ExpenseTrack.Web.Repository
         Task<int> AddExpenseAsync(Expense expense);
 
         Task<Expense> DeleteExpenseAsync(int expenseEntryId);
+
+        Task<bool> UpdateExpenseAsync(int expenseEntryId, Expense expense);
     }
 }
