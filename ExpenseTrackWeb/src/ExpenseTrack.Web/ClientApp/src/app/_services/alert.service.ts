@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Subject } from 'rxjs/Subject';
+import { Subject ,  Observable } from 'rxjs';
 
 import { AlertType } from '../_enums/alert.enum';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AlertService {

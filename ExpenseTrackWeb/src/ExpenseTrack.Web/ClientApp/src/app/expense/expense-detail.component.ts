@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl } from '@angular/forms';
 import { List } from 'linqts';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { Expense } from '../_models/expense.model';
