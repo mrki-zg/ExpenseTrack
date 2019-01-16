@@ -24,10 +24,10 @@ namespace ExpenseTrack.Web.Util
                 });
                 context.Users.Add(new User
                 {
-                    GivenName = "Robert",
-                    LegalName = "Mrkonjic",
+                    GivenName = "Admin",
+                    LegalName = "User",
                     UserName = "admin",
-                    Password = PasswordHelper.HashPassword("R091189mrki")
+                    Password = PasswordHelper.HashPassword("admin")
 
                 });
                 context.SaveChanges();
