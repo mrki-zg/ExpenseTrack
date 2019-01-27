@@ -1,0 +1,36 @@
+<div class="shell">
+  <mat-toolbar color="primary">
+    <button mat-button>
+      <mat-icon>monetization_on</mat-icon> Expanse Track
+    </button>
+
+    <span class="spacer"></span>
+
+    <div fxShow="true" fxHide.lt-md="true">
+      <button [routerLink]="['/dashboard/expenses']" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
+        mat-button>Expenses</button>
+    </div>
+
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button (click)="sidenav.toggle()" mat-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill class="example-container">
+    <mat-sidenav #sidenav fxLayout="column">
+      <div fxLayout="column">
+        <button (click)="sidenav.toggle()" mat-button>
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <button [routerLink]="['/dashboard/expenses']" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
+          mat-button>Expenses</button>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

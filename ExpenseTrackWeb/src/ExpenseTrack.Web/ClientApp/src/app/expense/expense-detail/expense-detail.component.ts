@@ -5,10 +5,10 @@ import { List } from 'linqts';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { Expense } from '../_models/expense.model';
-import { ExpenseService } from '../_services/expense.service';
-import { AuthenticationService } from '../_services/authentication.service';
-import { ExpenseCategoriesService } from '../_services/expense-categories.service';
+import { Expense } from '../../_models/expense.model';
+import { ExpenseService } from '../../_services/expense.service';
+import { AuthenticationService } from '../../_services/authentication.service';
+import { ExpenseCategoriesService } from '../../_services/expense-categories.service';
 
 @Component({
     selector: 'app-expense-detail',
