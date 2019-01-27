@@ -1,4 +1,4 @@
-import { MatToolbarModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +9,6 @@ import { ExpenseModule } from './expense/expense.module';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './_directives/alert.component';
 import { LoginComponent } from './login/login.component';
-import { FooterComponent } from './footer/footer.component';
 
 import { AuthenticationService } from './_services/authentication.service';
 import { AlertService } from './_services/alert.service';
@@ -25,7 +24,6 @@ import { RegisterComponent } from './register/register.component';
    declarations: [
       AppComponent,
       AlertComponent,
-      FooterComponent,
       LoginComponent,
       RegisterComponent,
    ],
@@ -41,7 +39,8 @@ import { RegisterComponent } from './register/register.component';
 
     // material
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
 
   providers: [

@@ -9,6 +9,8 @@
     <div fxShow="true" fxHide.lt-md="true">
       <button [routerLink]="['/dashboard/expenses']" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
         mat-button>Expenses</button>
+      <button mat-button (click)="signOut()">Log out ({{currentUser.givenName}} {{currentUser.legalName}})</button>
+
     </div>
 
     <div fxShow="true" fxHide.gt-sm="true">
@@ -24,6 +26,7 @@
         <button (click)="sidenav.toggle()" mat-button>
           <mat-icon>chevron_left</mat-icon>
         </button>
+        <button mat-button (click)="signOut()">Log out ({{currentUser.givenName}} {{currentUser.legalName}})</button>
         <button [routerLink]="['/dashboard/expenses']" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'
           mat-button>Expenses</button>
       </div>
