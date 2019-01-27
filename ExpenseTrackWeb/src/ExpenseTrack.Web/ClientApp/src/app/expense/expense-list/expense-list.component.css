@@ -5,3 +5,35 @@
 .expense-list-container, table {
     width: 100%;
 }
+
+table {
+    height: auto;
+    margin-top: 70px;
+    margin-bottom: 56px;
+    table-layout: fixed;
+}
+
+@media screen and (max-width: 360px) {
+    table {
+        margin-bottom: 96px;
+    }
+}
+
+mat-card {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 998;
+}
+
+mat-paginator {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+}
+
+.cmdBtn {
+    margin: 3px;
+}

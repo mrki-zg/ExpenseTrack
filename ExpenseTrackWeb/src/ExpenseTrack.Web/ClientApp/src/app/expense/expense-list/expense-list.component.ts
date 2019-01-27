@@ -24,7 +24,7 @@ export class ExpenseListComponent implements OnInit {
     private expenseService: ExpenseService,
     private authenticationService: AuthenticationService,
     private dialog: MatDialog,
-    private breakpointObserver: BreakpointObserver) { 
+    breakpointObserver: BreakpointObserver) { 
       breakpointObserver.observe([
         Breakpoints.Handset
       ]).subscribe(result => {
@@ -78,7 +78,7 @@ export class ExpenseListComponent implements OnInit {
     });
   }
 
-  private loadExpenses() {
+  loadExpenses() {
     this.expenseService.getAllForUser(this.authenticationService.currentUser.userId).subscribe(expenses => {
       this.expenses = expenses;
       this.dataSource.disconnect();

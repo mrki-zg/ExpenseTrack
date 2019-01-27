@@ -20,7 +20,7 @@
     </div>
   </mat-toolbar>
 
-  <mat-sidenav-container fxFlexFill class="example-container">
+  <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav fxLayout="column">
       <div fxLayout="column">
         <button (click)="sidenav.toggle()" mat-button>
@@ -32,7 +32,7 @@
       </div>
     </mat-sidenav>
 
-    <mat-sidenav-content fxFlexFill>
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

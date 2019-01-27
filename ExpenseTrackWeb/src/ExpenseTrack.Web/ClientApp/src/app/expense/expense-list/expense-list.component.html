@@ -1,7 +1,8 @@
 <div class="expense-list-container" fxLayout="column">
   <div class="expense-list-inner-container mat-elevation-z8" fxFlexAlign="center">
     <mat-card>
-        <button mat-button (click)="createNewExpense()" color="primary">New</button>
+        <button class="cmdBtn" mat-raised-button mat-button (click)="createNewExpense()" color="primary">New</button>
+        <button class="cmdBtn" mat-raised-button mat-button (click)="loadExpenses  ()" color="primary">Refresh</button>
     </mat-card>
 
     <table mat-table [dataSource]="dataSource">
@@ -49,7 +50,7 @@
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
     </table>
