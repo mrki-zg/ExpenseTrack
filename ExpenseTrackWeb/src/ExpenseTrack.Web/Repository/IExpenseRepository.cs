@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ExpenseTrack.Data.Model;
-using ExpenseTrack.Web.Transfer;
+using ExpenseTrack.Web.Models;
 
 namespace ExpenseTrack.Web.Repository
 {

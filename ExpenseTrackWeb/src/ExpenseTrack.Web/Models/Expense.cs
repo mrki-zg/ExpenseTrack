@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExpenseTrack.Web.Transfer
+namespace ExpenseTrack.Web.Models
 {
     public class Expense
     {

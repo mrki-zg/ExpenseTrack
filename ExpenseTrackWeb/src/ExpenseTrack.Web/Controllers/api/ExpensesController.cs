@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ExpenseTrack.Web.Models;
 using ExpenseTrack.Web.Repository;
-using ExpenseTrack.Web.Transfer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseTrack.Web.Controllers.api

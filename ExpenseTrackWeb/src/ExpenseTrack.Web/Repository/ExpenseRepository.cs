@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ExpenseTrack.Data;
 using ExpenseTrack.Data.Model;
-using ExpenseTrack.Web.Transfer;
+using ExpenseTrack.Web.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseTrack.Web.Repository
