@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Expense } from './../_models/expense.model';
+import { Expense } from '../_models/expense.model';
 
 @Injectable()
 export class ExpenseService {

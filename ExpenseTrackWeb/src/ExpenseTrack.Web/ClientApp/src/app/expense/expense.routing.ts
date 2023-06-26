@@ -16,4 +16,4 @@ const routes: Routes = [
   },
 ];
 
-export const expenseRouting = RouterModule.forChild(routes);
+export const ExpenseRouting = RouterModule.forChild(routes);

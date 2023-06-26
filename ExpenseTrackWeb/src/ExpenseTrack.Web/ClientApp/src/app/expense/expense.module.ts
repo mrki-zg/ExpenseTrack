@@ -14,23 +14,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
-import { expenseRouting } from './expense.routing';
+import { ExpenseRouting } from './expense.routing';
 
 import { HomeComponent } from './home.component';
 import { ExpenseDetailComponent } from './expense-detail/expense-detail.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 
-import { SumExpensesPipe } from '../_pipes/sum-expense.pipe';
+import { SumExpensesPipe } from './_pipes/sum-expense.pipe';
 
-import { ExpenseService } from '../_services/expense.service';
-import { ExpenseCategoriesService } from '../_services/expense-categories.service';
+import { ExpenseService } from './_services/expense.service';
+import { ExpenseCategoriesService } from './_services/expense-categories.service';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        expenseRouting,
+        ExpenseRouting,
         // material
         BrowserAnimationsModule,
         MatDialogModule,

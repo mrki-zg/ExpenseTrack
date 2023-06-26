@@ -1,5 +1,3 @@
-import { User } from "./user.model";
-
 export class ExpenseCategory {
     expenseCategoryId: number;
     userId: number;

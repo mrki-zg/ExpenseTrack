@@ -26,7 +26,6 @@
     "@angular/router": "^16.1.2",
     "aspnet-prerendering": "^3.0.1",
     "core-js": "^2.4.1",
-    "linqts": "1.12.2",
     "rxjs": "^6.3.3",
     "tslib": "^2.0.0",
     "zone.js": "^0.13.1"
