@@ -328,3 +328,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/ExpenseTrackWeb/src/ExpenseTrack.Web/ClientApp/.angular/cache/15.2.8

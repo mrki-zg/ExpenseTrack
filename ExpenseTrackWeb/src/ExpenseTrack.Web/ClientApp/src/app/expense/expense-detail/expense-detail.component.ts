@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { List } from 'linqts';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -18,7 +18,7 @@ import { ExpenseCategoriesService } from '../../_services/expense-categories.ser
 export class ExpenseDetailComponent implements OnInit {
     expense: Expense;
 
-    category = new UntypedFormControl();
+    category = new FormControl();
     categories: string[];
     filteredCategories: Observable<string[]>;
 
@@ -45,8 +45,8 @@ export class ExpenseDetailComponent implements OnInit {
         this.expenseCategoriesService.getAllForUser(this.authenticationService.currentUser.userId).subscribe(expenseCategories => {
             this.categories = new List(expenseCategories).Select(ec => ec.name).ToArray();
             if (this.category.value == null) {
-                this.category.setValue('');   
-            }            
+                this.category.setValue('');
+            }
         });
 
         this.category.valueChanges.subscribe(newVal => {
@@ -59,7 +59,7 @@ export class ExpenseDetailComponent implements OnInit {
             }
 
             return this.categories.filter(category => category.includes(value));
-        }));        
+        }));
     }
 
     saveExpense(): void {

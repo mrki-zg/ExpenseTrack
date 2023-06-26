@@ -1,5 +1,6 @@
 .expense-list-inner-container {
     width: 100%;
+    margin-top: 20px;
 }
 
 .expense-list-container, table {
@@ -8,7 +9,7 @@
 
 table {
     height: auto;
-    margin-top: 70px;
+    margin-top: 10px;
     margin-bottom: 56px;
     table-layout: fixed;
 }
@@ -17,21 +18,6 @@ table {
     table {
         margin-bottom: 96px;
     }
-}
-
-mat-card {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 998;
-}
-
-mat-paginator {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 998;
 }
 
 .cmdBtn {
