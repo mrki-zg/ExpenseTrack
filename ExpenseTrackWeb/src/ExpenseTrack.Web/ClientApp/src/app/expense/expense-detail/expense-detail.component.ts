@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { List } from 'linqts';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -18,7 +18,7 @@ import { ExpenseCategoriesService } from '../../_services/expense-categories.ser
 export class ExpenseDetailComponent implements OnInit {
     expense: Expense;
 
-    category = new FormControl();
+    category = new UntypedFormControl();
     categories: string[];
     filteredCategories: Observable<string[]>;
 

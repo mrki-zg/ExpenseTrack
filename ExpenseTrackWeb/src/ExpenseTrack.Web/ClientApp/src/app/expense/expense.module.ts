@@ -28,44 +28,38 @@ import { ExpenseService } from '../_services/expense.service';
 import { ExpenseCategoriesService } from '../_services/expense-categories.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-
-    expenseRouting,
-
-    // material
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatCardModule
-  ],
-  declarations: [
-    ExpenseDetailComponent,
-    ExpenseListComponent,
-    HomeComponent,
-
-    // pipes
-    SumExpensesPipe
-  ],
-  entryComponents: [
-    ExpenseDetailComponent
-  ],
-  providers: [
-    ExpenseService,
-    ExpenseCategoriesService
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        expenseRouting,
+        // material
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatMenuModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatCardModule
+    ],
+    declarations: [
+        ExpenseDetailComponent,
+        ExpenseListComponent,
+        HomeComponent,
+        // pipes
+        SumExpensesPipe
+    ],
+    providers: [
+        ExpenseService,
+        ExpenseCategoriesService
+    ]
 })
 export class ExpenseModule { }
