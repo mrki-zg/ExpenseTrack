@@ -24,7 +24,7 @@ namespace ExpenseTrack.Web.Repository
 
         public Task<User> GetUserAsync(int id)
         {
-            return _dbContext.Users.FindAsync(id);
+            return _dbContext.Users.SingleOrDefaultAsync(u => u.UserId == id);
         }
 
         public Task<User> GetUserByUserNameAsync(string userName)

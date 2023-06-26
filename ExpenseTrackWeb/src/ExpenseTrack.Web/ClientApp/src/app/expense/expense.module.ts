@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatDialogModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatMenuModule, MatIconModule, MatToolbarModule,
-  MatCardModule, MatSidenavModule, MatListModule, MatButtonModule, MatTableModule, MatPaginatorModule
-} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 import { expenseRouting } from './expense.routing';
 
@@ -20,45 +26,38 @@ import { ExpenseService } from '../_services/expense.service';
 import { ExpenseCategoriesService } from '../_services/expense-categories.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-
-    expenseRouting,
-
-    // material
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatMenuModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatCardModule
-  ],
-  declarations: [
-    ExpenseDetailComponent,
-    ExpenseListComponent,
-    HomeComponent,
-
-    // pipes
-    SumExpensesPipe
-  ],
-  entryComponents: [
-    ExpenseDetailComponent
-  ],
-  providers: [
-    ExpenseService,
-    ExpenseCategoriesService
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        expenseRouting,
+        // material
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatInputModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatCardModule
+    ],
+    declarations: [
+        ExpenseDetailComponent,
+        ExpenseListComponent,
+        HomeComponent,
+        // pipes
+        SumExpensesPipe
+    ],
+    providers: [
+        ExpenseService,
+        ExpenseCategoriesService
+    ]
 })
 export class ExpenseModule { }
