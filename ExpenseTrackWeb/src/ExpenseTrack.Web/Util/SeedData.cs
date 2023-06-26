@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using ExpenseTrack.Data;
 using ExpenseTrack.Data.Model;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ExpenseTrack.Web.Util
