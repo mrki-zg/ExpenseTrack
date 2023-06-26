@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AlertService } from './../_services/alert.service';
-import { AlertType } from './../_enums/alert.enum';
+import { AlertService } from '../_services/alert.service';
+import { AlertType } from './_enums/alert.enum';
 
 @Component({
   selector: 'alert',

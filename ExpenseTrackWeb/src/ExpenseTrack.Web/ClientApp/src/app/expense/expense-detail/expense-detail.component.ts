@@ -1,14 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { List } from 'linqts';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { Expense } from '../../_models/expense.model';
-import { ExpenseService } from '../../_services/expense.service';
+import { Expense } from '../_models/expense.model';
+import { ExpenseService } from '../_services/expense.service';
 import { AuthenticationService } from '../../_services/authentication.service';
-import { ExpenseCategoriesService } from '../../_services/expense-categories.service';
+import { ExpenseCategoriesService } from '../_services/expense-categories.service';
 
 @Component({
     selector: 'app-expense-detail',
@@ -43,7 +42,7 @@ export class ExpenseDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.expenseCategoriesService.getAllForUser(this.authenticationService.currentUser.userId).subscribe(expenseCategories => {
-            this.categories = new List(expenseCategories).Select(ec => ec.name).ToArray();
+            this.categories = expenseCategories.map(e => e.name);
             if (this.category.value == null) {
                 this.category.setValue('');
             }

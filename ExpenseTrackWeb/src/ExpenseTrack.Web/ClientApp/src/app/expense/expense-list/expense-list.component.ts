@@ -4,9 +4,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
 import { ExpenseDetailComponent } from '../expense-detail/expense-detail.component';
-import { ExpenseService } from '../../_services/expense.service';
+import { ExpenseService } from '../_services/expense.service';
 import { AuthenticationService } from '../../_services/authentication.service';
-import { Expense } from '../../_models/expense.model';
+import { Expense } from '../_models/expense.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({

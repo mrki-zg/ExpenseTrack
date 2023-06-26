@@ -2,7 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AlertService } from './alert.service';
-import { AlertType } from './../_enums/alert.enum';
+import { AlertType } from '../alert/_enums/alert.enum';
 
 describe('Service: Alert', () => {
   beforeEach(() => {

@@ -10,7 +10,7 @@ import { MatCardModule } from "@angular/material/card";
 import { ExpenseModule } from "./expense/expense.module";
 
 import { AppComponent } from "./app.component";
-import { AlertComponent } from "./_directives/alert.component";
+import { AlertComponent } from "./alert/alert.component";
 import { LoginComponent } from "./login/login.component";
 
 import { AuthenticationService } from "./_services/authentication.service";
@@ -31,7 +31,7 @@ import { RegisterComponent } from "./register/register.component";
     RegisterComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
+    BrowserModule,
     HttpClientModule,
     FormsModule,
 
