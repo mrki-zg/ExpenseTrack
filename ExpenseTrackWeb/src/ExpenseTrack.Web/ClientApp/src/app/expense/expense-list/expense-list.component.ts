@@ -20,7 +20,7 @@ export class ExpenseListComponent implements OnInit {
   expenses: Expense[] = [];
   dataSource = new MatTableDataSource<Expense>(this.expenses);
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     private expenseService: ExpenseService,
