@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { MatDialog, MatTableDataSource, MatPaginator } from '@angular/material'
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { ExpenseDetailComponent } from '../expense-detail/expense-detail.component';
 import { ExpenseService } from '../../_services/expense.service';
@@ -18,13 +20,13 @@ export class ExpenseListComponent implements OnInit {
   expenses: Expense[] = [];
   dataSource = new MatTableDataSource<Expense>(this.expenses);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 
   constructor(
     private expenseService: ExpenseService,
     private authenticationService: AuthenticationService,
     private dialog: MatDialog,
-    breakpointObserver: BreakpointObserver) { 
+    breakpointObserver: BreakpointObserver) {
       breakpointObserver.observe([
         Breakpoints.Handset
       ]).subscribe(result => {

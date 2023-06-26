@@ -1,4 +1,6 @@
-import { MatToolbarModule, MatCardModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +35,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
 
     routing,
-    
+
     // app
     ExpenseModule,
 
