@@ -1,19 +1,24 @@
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
+import {
+	ActivatedRouteSnapshot,
+	RouterStateSnapshot,
+	Router
+} from "@angular/router";
 import { Injectable } from "@angular/core";
 
 @Injectable()
-export class AuthGuard  {
+export class AuthGuard {
+	constructor(private router: Router) {}
 
-    constructor(private router: Router) { }
+	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+		if (localStorage.getItem("currentUser")) {
+			// is logged in
+			return true;
+		}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
-            // is logged in
-            return true;
-        }
-
-        // not logged in, redirect...
-        this.router.navigate(['login'], { queryParams: { returnUrl: state.url } });
-        return false;
-    }
+		// not logged in, redirect...
+		this.router.navigate(["login"], {
+			queryParams: { returnUrl: state.url }
+		});
+		return false;
+	}
 }

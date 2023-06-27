@@ -1,4 +1,4 @@
 export enum AlertType {
-    success,
-    error
+	success,
+	error
 }

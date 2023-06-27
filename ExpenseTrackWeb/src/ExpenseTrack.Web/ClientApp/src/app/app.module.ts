@@ -24,40 +24,40 @@ import { JwtInterceptor } from "./_helpers/jwt.interceptor";
 import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AlertComponent,
-    LoginComponent,
-    RegisterComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
+	declarations: [
+		AppComponent,
+		AlertComponent,
+		LoginComponent,
+		RegisterComponent
+	],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		FormsModule,
 
-    routing,
+		routing,
 
-    // app
-    ExpenseModule,
+		// app
+		ExpenseModule,
 
-    // material
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-  ],
+		// material
+		MatCardModule,
+		MatInputModule,
+		MatButtonModule
+	],
 
-  providers: [
-    AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true,
-    },
-    AlertService,
-    AuthenticationService,
-    UserService,
-  ],
+	providers: [
+		AuthGuard,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: JwtInterceptor,
+			multi: true
+		},
+		AlertService,
+		AuthenticationService,
+		UserService
+	],
 
-  bootstrap: [AppComponent],
+	bootstrap: [AppComponent]
 })
 export class AppModule {}
